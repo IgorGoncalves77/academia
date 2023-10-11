@@ -100,7 +100,7 @@ public class InscricoesImpl {
                 inscricao.setDataInscricao(rs.getString("data_inscricao"));
                 inscricao.setDataVencimento(rs.getString("data_vencimento"));
                 inscricao.setStatusPagamento(rs.getString("status_pagamento"));
-
+                
                 inscricoesList.add(inscricao);
             }
 
@@ -113,7 +113,10 @@ public class InscricoesImpl {
     }
     
     public ResultSet listarInscricoes2() throws SQLException {
-        pstmtListar = con.prepareStatement("SELECT client_id, plano_id, data_vencimento, status_pagamento FROM inscricoes", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        pstmtListar = con.prepareStatement("SELECT c.nome AS nome_cliente, p.nome_plano, i.data_vencimento, i.status_pagamento " +
+                "FROM inscricoes i " +
+                "INNER JOIN clientes c ON i.client_id = c.client_id " +
+                "INNER JOIN planostreinamento p ON i.plano_id = p.plano_id", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = pstmtListar.executeQuery();
         return rs;
     }

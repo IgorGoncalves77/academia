@@ -14,7 +14,7 @@ public class ListaAulas extends javax.swing.JFrame {
     public ListaAulas() throws SQLException, ClassNotFoundException {
        
         //define os nomes das colunas da tabela 
-        String[] colunas = new String[]{"Nome", "Dia da Semana", "Horário"};
+        String[] colunas = new String[]{"Nome", "Dia da Semana", "Horário", "Instrutor"};
         tableModel = new ResultSetTableModel(colunas);
         
         AulasImpl aulasImpl = new AulasImpl(); 

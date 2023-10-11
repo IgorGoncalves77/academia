@@ -114,7 +114,10 @@ public class AulasImpl{
     }
     
     public ResultSet listarAulas2() throws SQLException {
-        pstmtListar = con.prepareStatement("SELECT nome_aula, dia_semana, horario FROM aulas", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        pstmtListar = con.prepareStatement("SELECT a.nome_aula, a.dia_semana, a.horario, i.nome AS nome_instrutor " +
+                "FROM aulas a " +
+                "INNER JOIN instrutores i ON a.instrutor_id = i.instrutor_id",
+                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         ResultSet rs = pstmtListar.executeQuery();
         return rs;
     }
