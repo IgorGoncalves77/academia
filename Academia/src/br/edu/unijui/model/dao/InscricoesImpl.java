@@ -112,6 +112,16 @@ public class InscricoesImpl {
         return inscricoesList;
     }
     
+    public ResultSet consultarClientesEmAtraso() throws SQLException {
+        pstmtListar = con.prepareStatement("SELECT c.nome, p.nome_plano, i.data_vencimento, i.status_pagamento " +
+            "FROM inscricoes i " +
+            "INNER JOIN clientes c ON i.client_id = c.client_id " +
+            "INNER JOIN planostreinamento p ON i.plano_id = p.plano_id " +
+            "WHERE i.status_pagamento = 'Em Atraso'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = pstmtListar.executeQuery();
+        return rs;
+    }
+    
     public ResultSet listarInscricoes2() throws SQLException {
         pstmtListar = con.prepareStatement("SELECT c.nome AS nome_cliente, p.nome_plano, i.data_vencimento, i.status_pagamento " +
                 "FROM inscricoes i " +

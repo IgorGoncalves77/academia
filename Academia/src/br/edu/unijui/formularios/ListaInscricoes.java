@@ -6,6 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 public class ListaInscricoes extends javax.swing.JFrame {
 
@@ -39,6 +45,7 @@ public class ListaInscricoes extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,20 +76,30 @@ public class ListaInscricoes extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Exporta Inadimplesntes");
+        jButton4.setName("btnExecutar"); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jButton3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jButton2))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,8 +111,10 @@ public class ListaInscricoes extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -116,6 +135,51 @@ public class ListaInscricoes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+        InscricoesImpl inscricoesImpl = new InscricoesImpl(); 
+        ResultSet rs = inscricoesImpl.consultarClientesEmAtraso();
+
+        // Cria um arquivo XML para salvar os resultados
+        File outputFile = new File("clientes_em_atraso.xml");
+        FileWriter fileWriter = new FileWriter(outputFile);
+
+        // Inicializa o escritor XML
+        XMLOutputFactory xmlFactory = XMLOutputFactory.newInstance();
+        XMLStreamWriter xmlWriter = xmlFactory.createXMLStreamWriter(fileWriter);
+
+        // Escreve o cabeçalho do XML
+        xmlWriter.writeStartDocument();
+        xmlWriter.writeStartElement("clientes_em_atraso");
+
+        // Itera sobre os resultados da consulta e escreve cada cliente no XML
+        while (rs.next()) {
+            xmlWriter.writeStartElement("cliente");
+            xmlWriter.writeAttribute("Nome", rs.getString("nome"));
+            xmlWriter.writeAttribute("Plano", rs.getString("nome_plano"));
+            xmlWriter.writeAttribute("Vencimento", rs.getString("data_vencimento"));
+            xmlWriter.writeAttribute("Status", rs.getString("status_pagamento"));
+            xmlWriter.writeEndElement();
+        }
+
+        // Fecha as tags do XML
+        xmlWriter.writeEndElement();
+        xmlWriter.writeEndDocument();
+
+        // Fecha o escritor XML e o arquivo
+        xmlWriter.close();
+        fileWriter.close();
+
+        System.out.println("Clientes em atraso exportados para clientes_em_atraso.xml");
+    } catch (SQLException | XMLStreamException e) {
+        e.printStackTrace();
+    }   catch (ClassNotFoundException ex) {
+            Logger.getLogger(ListaInscricoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ListaInscricoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,6 +235,7 @@ public class ListaInscricoes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
