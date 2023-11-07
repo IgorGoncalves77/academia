@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.Clientes;
 import br.edu.unijui.model.dao.ClientesImpl;
 import java.sql.SQLException;
@@ -207,6 +208,7 @@ public class frmClientes extends javax.swing.JFrame {
             }
 
             if (clientesImp.inserirCliente(clientes)) {
+                LogManager.log("Cliente " + clientes.getNome() + " inserido com sucesso!");
                 JOptionPane.showMessageDialog(null, "Cliente " + clientes.getNome() + " inserido com sucesso!");
                 textFieldNome.setText("");
                 textFieldSobrenome.setText("");

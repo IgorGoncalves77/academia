@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.Aulas;
 import br.edu.unijui.model.Instrutores;
 import br.edu.unijui.model.dao.AulasImpl;
@@ -263,6 +264,7 @@ public class frmAulas extends javax.swing.JFrame {
             }
 
             if (aulasImpl != null && aulasImpl.inserirAula(aula)) {
+                LogManager.log("Aula " + aula.getNomeAula() + " inserida com sucesso!");
                 JOptionPane.showMessageDialog(null, "Aula " + aula.getNomeAula() + " inserida com sucesso!");
                 // Limpar campos
                 textFieldAula.setText("");

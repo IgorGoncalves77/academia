@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.Instrutores;
 import br.edu.unijui.model.dao.InstrutoresImpl;
 import java.sql.SQLException;
@@ -182,6 +183,7 @@ public class frmInstrutores extends javax.swing.JFrame {
             }
 
             if (instrutorImpl.inserirInstrutor(instrutor)) {
+                LogManager.log("Instrutor " + instrutor.getNome() + " inserido com sucesso!");
                 JOptionPane.showMessageDialog(null, "Instrutor " + instrutor.getNome() + " inserido com sucesso!");
                 textFieldNome.setText("");
                 textFieldSobrenome.setText("");

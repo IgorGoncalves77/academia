@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.Clientes;
 import br.edu.unijui.model.Inscricoes;
 import br.edu.unijui.model.Planos;
@@ -264,6 +265,7 @@ public class frmInscricoes extends javax.swing.JFrame {
             }
 
             if (inscricoesImpl != null && inscricoesImpl.inserirInscricao(inscricao)) {
+                LogManager.log("Incrição inserida com sucesso!");
                 JOptionPane.showMessageDialog(null, "Incrição inserida com sucesso!");
                 // Limpar campos
                 comboBoxClientes.setSelectedIndex(-1);

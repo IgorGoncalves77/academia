@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.Planos;
 import br.edu.unijui.model.dao.PlanosImpl;
 import java.sql.SQLException;
@@ -196,6 +197,7 @@ public class frmPlanos extends javax.swing.JFrame {
             }
 
             if (planosImpl.inserirPlano(plano)) {
+                LogManager.log("Plano " + plano.getNomePlano() + " inserido com sucesso!");
                 JOptionPane.showMessageDialog(null, "Plano " + plano.getNomePlano() + " inserido com sucesso!");
                 textFieldNome.setText("");
                 textFieldDescricao.setText("");

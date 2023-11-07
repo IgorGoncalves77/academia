@@ -76,7 +76,7 @@ public class ListaInscricoes extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Exporta Inadimplesntes");
+        jButton4.setText("Exporta Inadimplentes");
         jButton4.setName("btnExecutar"); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
