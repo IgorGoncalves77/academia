@@ -1,6 +1,1 @@
-<?xml version="1.0"?>
-<clientes_em_atraso>
-    <cliente Nome="João" Plano="Plano B" Vencimento="2023-07-03" Status="Em atraso"></cliente>
-    <cliente Nome="Carlos" Plano="Plano C" Vencimento="2023-11-01" Status="Em atraso"></cliente>
-    <cliente Nome="Ana" Plano="Plano C" Vencimento="2023-10-18" Status="Em atraso"></cliente>
-</clientes_em_atraso>
+<?xml version="1.0" ?><clientes_em_atraso><cliente Nome="João" Plano="Plano B" Vencimento="2023-07-03" Status="Em atraso"></cliente><cliente Nome="Carlos" Plano="Plano C" Vencimento="2023-11-01" Status="Em atraso"></cliente><cliente Nome="Ana" Plano="Plano C" Vencimento="2023-10-18" Status="Em atraso"></cliente><cliente Nome="Betina" Plano="Plano D" Vencimento="2024-11-06" Status="Em atraso"></cliente></clientes_em_atraso>

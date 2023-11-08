@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.dao.InscricoesImpl;
 import br.edu.unijui.model.dao.ResultSetTableModel;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -170,8 +172,8 @@ public class ListaInscricoes extends javax.swing.JFrame {
         // Fecha o escritor XML e o arquivo
         xmlWriter.close();
         fileWriter.close();
-
-        System.out.println("Clientes em atraso exportados para clientes_em_atraso.xml");
+        LogManager.log("Clientes em atraso exportados para clientes_em_atraso.xml");
+        JOptionPane.showMessageDialog(this, "Clientes em atraso exportados para clientes_em_atraso.xml");
     } catch (SQLException | XMLStreamException e) {
         e.printStackTrace();
     }   catch (ClassNotFoundException ex) {

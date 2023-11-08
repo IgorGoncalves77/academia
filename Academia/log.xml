@@ -12,4 +12,12 @@
         <timestamp>2023-11-08 16:20:36</timestamp>
         <message>Cliente Cristiano inserido com sucesso!</message>
     </entry>
+    <entry>
+        <timestamp>2023-11-08 16:41:58</timestamp>
+        <message>Clientes em atraso exportados para clientes_em_atraso.xml</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-08 16:43:08</timestamp>
+        <message>Clientes em atraso exportados para clientes_em_atraso.xml</message>
+    </entry>
 </log>
