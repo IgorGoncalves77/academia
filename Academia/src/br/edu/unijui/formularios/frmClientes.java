@@ -14,6 +14,13 @@ public class frmClientes extends javax.swing.JFrame {
         initComponents();
     }
 
+    private ListaClientes listaClientes;
+
+    public frmClientes(ListaClientes lista) {
+        this.listaClientes = lista;
+        initComponents();
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -216,6 +223,10 @@ public class frmClientes extends javax.swing.JFrame {
                 textFieldEmail.setText("");
                 jDateChooser1.setDate(null);
                 comboBoxGenero.setSelectedIndex(-1);
+                
+                if (listaClientes != null) {
+                    listaClientes.refreshListaClientes();
+                }
                 this.dispose();
             
             } else {

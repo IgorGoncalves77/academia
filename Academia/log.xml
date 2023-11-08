@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><log>
-    <entry>Cliente inserido com sucesso: Jair</entry>
-    <entry>Cliente inserido com sucesso: Lionel</entry>
-<entry>Cliente inserido com sucesso: Lais</entry></log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<log>
+    <entry>
+        <timestamp>2023-11-08 16:07:02</timestamp>
+        <message>Instrutor Alex inserido com sucesso!</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-08 16:07:55</timestamp>
+        <message>Incrição inserida com sucesso!</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-08 16:20:36</timestamp>
+        <message>Cliente Cristiano inserido com sucesso!</message>
+    </entry>
+</log>

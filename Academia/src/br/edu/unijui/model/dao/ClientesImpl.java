@@ -30,7 +30,6 @@ public class ClientesImpl{
     
     public boolean inserirCliente(Clientes cliente) {
         try {
-            System.out.println(cliente.getGenero());
             pstmtInserir = con.prepareStatement(""
                 + "insert into clientes (client_id, nome, sobrenome, data_nascimento, genero, telefone, email)" 
                 + "values (default, ?, ?, ?, ?, ?, ?)");

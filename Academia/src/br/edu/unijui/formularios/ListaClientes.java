@@ -1,5 +1,6 @@
 package br.edu.unijui.formularios;
 
+import br.edu.unijui.classes.LogManager;
 import br.edu.unijui.model.Clientes;
 import br.edu.unijui.model.dao.ClientesImpl;
 import br.edu.unijui.model.dao.ResultSetTableModel;
@@ -28,13 +29,29 @@ public class ListaClientes extends javax.swing.JFrame {
         String[] colunas = new String[]{"Nome","Data Nascimento", "Telefone"};
         tableModel = new ResultSetTableModel(colunas);
         
-        ClientesImpl clientesImpl = new ClientesImpl(); 
-            ResultSet rs = clientesImpl.listarClientes2();
-            tableModel.setResultSet(rs);
+        //ClientesImpl clientesImpl = new ClientesImpl(); 
+        //    ResultSet rs = clientesImpl.listarClientes2();
+        //    tableModel.setResultSet(rs);
             
         initComponents();
+        atualizarListaClientes();
         
     }
+    
+    private void atualizarListaClientes() throws SQLException, ClassNotFoundException {
+        ClientesImpl clientesImpl = new ClientesImpl(); 
+        ResultSet rs = clientesImpl.listarClientes2();
+        tableModel.setResultSet(rs);
+        tableModel.fireTableDataChanged(); // Notifica a JTable sobre a mudança de dados
+    }
+    
+    public void refreshListaClientes() {
+    try {
+        atualizarListaClientes();
+    } catch (SQLException | ClassNotFoundException ex) {
+        Logger.getLogger(ListaClientes.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,7 +143,7 @@ public class ListaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        frmClientes frame = new frmClientes();
+        frmClientes frame = new frmClientes(this);
         frame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -181,7 +198,8 @@ public class ListaClientes extends javax.swing.JFrame {
                         }
                     }
                 }
-
+                atualizarListaClientes();
+                LogManager.log("Clientes importados com sucesso!");
                 JOptionPane.showMessageDialog(this, "Clientes importados com sucesso!");
             } catch (Exception e) {
                 e.printStackTrace();
