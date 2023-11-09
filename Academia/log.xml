@@ -20,4 +20,24 @@
         <timestamp>2023-11-08 16:43:08</timestamp>
         <message>Clientes em atraso exportados para clientes_em_atraso.xml</message>
     </entry>
+    <entry>
+        <timestamp>2023-11-08 19:26:54</timestamp>
+        <message>Clientes importados com sucesso!</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-08 19:27:33</timestamp>
+        <message>Incrição inserida com sucesso!</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-08 19:27:52</timestamp>
+        <message>Clientes em atraso exportados para clientes_em_atraso.xml</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-09 16:14:07</timestamp>
+        <message>Clientes em atraso exportados para clientes_em_atraso.xml</message>
+    </entry>
+    <entry>
+        <timestamp>2023-11-09 16:15:26</timestamp>
+        <message>Clientes em atraso exportados para clientes_em_atraso.xml</message>
+    </entry>
 </log>

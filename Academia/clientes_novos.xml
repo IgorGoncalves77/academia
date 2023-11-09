@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <clientes>
     <cliente>
-        <nome>Bruna</nome>
+        <nome>Ari</nome>
         <sobrenome>Marquezini</sobrenome>
         <data_nascimento>2004-12-17</data_nascimento>
         <genero>Feminino</genero>
@@ -9,7 +9,7 @@
         <email>marilia.martins@email.com</email>
     </cliente>
     <cliente>
-        <nome>Neymar</nome>
+        <nome>Mari</nome>
         <sobrenome>Jr</sobrenome>
         <data_nascimento>1973-05-13</data_nascimento>
         <genero>Feminino</genero>
@@ -17,7 +17,7 @@
         <email>liliane.boeira@email.com</email>
     </cliente>
     <cliente>
-        <nome>Larissa</nome>
+        <nome>Jorge</nome>
         <sobrenome>Manuela</sobrenome>
         <data_nascimento>1974-10-31</data_nascimento>
         <genero>Masculino</genero>

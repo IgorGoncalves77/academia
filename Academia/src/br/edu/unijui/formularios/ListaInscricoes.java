@@ -158,11 +158,24 @@ public class ListaInscricoes extends javax.swing.JFrame {
         // Itera sobre os resultados da consulta e escreve cada cliente no XML
         while (rs.next()) {
             xmlWriter.writeStartElement("cliente");
-            xmlWriter.writeAttribute("Nome", rs.getString("nome"));
-            xmlWriter.writeAttribute("Plano", rs.getString("nome_plano"));
-            xmlWriter.writeAttribute("Vencimento", rs.getString("data_vencimento"));
-            xmlWriter.writeAttribute("Status", rs.getString("status_pagamento"));
+
+            xmlWriter.writeStartElement("nome");
+            xmlWriter.writeCharacters(rs.getString("nome"));
             xmlWriter.writeEndElement();
+
+            xmlWriter.writeStartElement("plano");
+            xmlWriter.writeCharacters(rs.getString("nome_plano"));
+            xmlWriter.writeEndElement();
+
+            xmlWriter.writeStartElement("vencimento");
+            xmlWriter.writeCharacters(rs.getString("data_vencimento"));
+            xmlWriter.writeEndElement();
+
+            xmlWriter.writeStartElement("status");
+            xmlWriter.writeCharacters(rs.getString("status_pagamento"));
+            xmlWriter.writeEndElement();
+
+            xmlWriter.writeEndElement(); // Fecha a tag <cliente>
         }
 
         // Fecha as tags do XML
